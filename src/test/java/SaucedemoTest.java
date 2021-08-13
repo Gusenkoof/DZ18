@@ -31,7 +31,7 @@ public class SaucedemoTest {
         loginPage.login();
         loginPage.startMessage.shouldBe(visible);
         //проверка
-        Assertions.assertEquals("PRODUCTS", loginPage.startMessage.getText(), "Вы зашли не на ту страницу");
+        Assertions.assertEquals("PRODUCT", loginPage.startMessage.getText(), "Вы зашли не на ту страницу");
     }
 
     @Test
