@@ -1,8 +1,12 @@
+import io.qameta.allure.Step;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+
 public class FillingFormPage extends LocatorsPage{
+    @Step("Заполнение формы")
     void fillingForm() throws IOException{
         Properties properties = new Properties();
         properties.load(new FileInputStream("src/main/resources/user.properties"));

@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class SaucedemoTest {
+public class SaucedemoTest extends LocatorsPage{
 
     @BeforeEach
     public void setUp(){
@@ -23,6 +24,12 @@ public class SaucedemoTest {
         closeWebDriver();
     }
 
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("Тест входа под логином и паролем")
+    @Feature("Логин")
+    @Owner("Гусенков")
+    @Issue("111111")
+    @Link("https://ya.ru")
     @Test
     @Order(1)
     public void loginTest() throws IOException {
@@ -34,6 +41,10 @@ public class SaucedemoTest {
         Assertions.assertEquals("PRODUCTS", loginPage.startMessage.getText(), "Вы зашли не на ту страницу");
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Покупка товаров")
+    @Feature("Покупка")
+    @Owner("Гусенков")
     @Test
     @Order(2)
     public void purchaseTest() throws IOException{
@@ -52,6 +63,10 @@ public class SaucedemoTest {
 
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Отмена покупки")
+    @Feature("отмена покупки")
+    @Owner("Гусенков")
     @Test
     @Order(3)
     public void cancelingPurchaseTest() throws  IOException{
@@ -69,7 +84,12 @@ public class SaucedemoTest {
         Assertions.assertEquals("PRODUCTS", fillingFormPage.startMessage.getText(), "Чтото пошло не так!");
 
     }
-
+    @Flaky
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Удаление продукта из карзины")
+    @Feature("Корзина")
+    @Owner("Гусенков")
+    @Issue("jksdhgf.skdj")
     @Test
     @Order(4)
     public void deletingProductsTest() throws IOException{
@@ -92,6 +112,11 @@ public class SaucedemoTest {
 
     }
 
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Проверка подсчета ссуммы")
+    @Feature("Сумма")
+    @Owner("Гусенков")
+    @Link("ya.ru")
     @Test
     @Order(5)
     public void calculatingAmountTest() throws IOException{
